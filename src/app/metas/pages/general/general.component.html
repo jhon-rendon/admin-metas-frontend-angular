@@ -1,0 +1,87 @@
+
+
+                       
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title" style="text-align:center;">Registro del Incremento de porcentaje de Meta General del A&ntilde;o  <b></b> Mes de <b></b></h4>
+            
+            <!--<button id="cargarData" type="button" class="btn btn-info">Cargar Data</button>
+            <div id="infoAjax">
+            
+            </div>-->
+           
+            <form method="post" enctype="multipart/form-data" action="" id="formMetaGeneral">
+                
+                
+                <input type="hidden" name="formRegistroMetaGeneralMes" value="1"/>
+                <input type="hidden" name="anio" value=""/>
+                <input type="hidden" name="mes" value=""/>
+                             
+               
+               <table class="table table-bordered table-hover">
+                      
+                      
+                      
+                      
+                           <tr>
+                              <div class="form-group">
+                                <td><label for="mes">Producto#</label></td>
+                                <td>
+                                    <select class="form-control selectpicker agrupacion"  style="width:auto;" name="producto[]" >
+                                        <option value=""></option>
+                                     </select>
+                                </td>
+                                <td>
+                                    <input type="text" onkeyup="ValidNumberInput(this);" onchange="ValidNumberInput(this);" name="porcentaje[]" class="form-control" style="width:200px;" placeholder="valor % Incremento" required=""/>
+                                </td>
+                               </div>
+                       
+                           </tr>
+                           
+                   
+              </table>
+                   <!--<center><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" type="submit">Registrar</button></center>-->
+                  
+            </form>
+             <button class="btn btn-primary"  type="submit" id="btnEnviarForm">Registrar</button>
+             <!--<center><button class="btn btn-primary"  type="button" id="btnEnviarForm">Registrar</button></center>-->
+             
+              
+                <select name="filtroAnio" class="selectpicker" data-style="btn-success" data-live-search="true" id="filtroAnio">
+                    
+                    <option value=""></option>
+                     
+                </select>
+                
+            <br />
+            
+            <table class="table table-bordered table-hover DataTableListado">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">A&ntilde;o</th>
+                  <th scope="col">Mes</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">% Incremento</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                 
+                  <td></td>
+                  <td> </td>
+                  <td> </td>
+                  <td> %</td>
+               
+                </tr>
+                
+                   
+              </tbody>
+            </table>
+         
+        </div>
+    </div>
+    
+
+

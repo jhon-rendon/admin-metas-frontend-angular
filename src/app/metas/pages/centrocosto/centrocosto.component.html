@@ -1,0 +1,158 @@
+
+                    <div class="col-lg-12" >
+                       
+                        <div class="card">
+                            <!--<div class="card-header text-center fondo-titulo" style="">
+                                 Meta por producto del A&ntilde;o actual <b><?php echo $anio;?></b> Mes de <b><?php echo $mesTexto;?></b> a los centros de costo
+                             </div>-->
+                            <div class="card-body">
+                                
+                                
+                                <h4 class="card-title" style="text-align:center"> Meta por linea de producto del A&ntilde;o actual <b></b> Mes de <b></b> a los centros de costo</h4>
+                                <form method="post" id="formMetaCCosto">
+                                      <input  type="hidden" name="validFormMetaCentroCosto" value="1"/>
+                                      <table class="table table-striped" style="width:30%;margin:0 auto;">
+                                          
+                                         
+                                               <tr>
+                                                  <div class="form-group">
+                                                    <!--<td><label for="mes">Producto#<?php echo $contador;?></label></td>-->
+                                                    <td style="font-weight: bold;">
+                                                        <!--<select class="form-control"  style="width:auto;" name="producto[]" >
+                                                            <option value="<?php echo $grupoProductos['codigo'];?>"><?php echo $grupoProductos['nombre_corto']?></option>
+                                                         </select>-->
+                                                        
+                                                         
+                                                    </td>
+                                                    <td>
+                                                        <input type="hidden" name="porcentaje[]" value=""/>
+                                                        <input type="hidden" name="idMeta[]" value=""/>
+                                                        
+                                                        <b>%</b>
+                                                    </td>
+                                                   </div>
+                                           
+                                               </tr>
+
+                                      
+                                      </table>
+                                    
+																	
+										<select name="filtroAnioGenerarMeta" class="selectpicker" data-style="btn-info" data-live-search="true" id="filtroAnioGenerarMeta">
+											<option value="0" selected="selected">Seleccione el Año</option>
+											
+											<option value=""><?php echo $i;?></option>
+											
+										</select>
+										
+										<select class="selectpicker" id="filtroMesGenerarMeta" name="filtroMesGenerarMeta" style="width: 300px;" data-style="btn-info" data-live-search="true">
+													  
+													  
+													  <option value="0" selected="selected">Seleccione el Mes</option>
+													 
+													  
+													  <option value="1" >Enero</option>
+													  <option value="2" >Febrero</option>
+													  <option value="3" >Marzo</option>
+													  <option value="4" >Abril</option>
+													  <option value="5" >Mayo</option>
+													  <option value="6" >Junio</option>
+													  <option value="7" >Julio</option>
+													  <option value="8">Agosto</option>
+													  <option value="9">Septiembre</option>
+													  <option value="10">Octubre</option>
+													  <option value="11">Noviembre</option>
+													  <option value="12">Diciembre</option>
+												  
+									   </select>
+									   <br><br>
+								  
+                                
+                                
+                                 <button class="btn btn-primary" id="btnEnviarForm" type="submit">Generar Metas Mes <?php echo cambiarMesALetra($mes)." de ".$anio;?> Para Los Centros de Costos</button>
+                                  </form>
+								  <br /><hr />
+                                  <h4 class="card-title" style="text-align:center">
+                                  *No existe fecha con registros de porcentajes de incremento para generar las metas a los centros de costo!!  
+                                  
+                                  </h4>
+                                    <br />
+                                    <hr />
+                               
+                               
+                                
+                                      <h3 style='text-align:center;'>METAS CENTRO DE COSTO ".$_SESSION['ccostoNombreLogin']."</h3>";
+                                    
+                                     
+                                    <select name="filtroAnio" class="selectpicker" data-style="btn-success" data-live-search="true" id="filtroAnio">
+                                        
+                                        <option value="<?php echo $i; ?>"><?php echo $i;?></option>
+                                        
+                                    </select>
+                                        <select class="selectpicker" id="filtroMes" name="mes" style="width: 300px;" data-style="btn-success" data-live-search="true">
+                                                  
+                                                  <option value="0" selected="selected">Seleccione el Mes</option>
+                                                  
+                                                  <option value="1" >Enero</option>
+                                                  <option value="2" >Febrero</option>
+                                                  <option value="3" >Marzo</option>
+                                                  <option value="4" >Abril</option>
+                                                  <option value="5">Mayo</option>
+                                                  <option value="6" >Junio</option>
+                                                  <option value="7" >Julio</option>
+                                                  <option value="8" >Agosto</option>
+                                                  <option value="9" >Septiembre</option>
+                                                  <option value="10" >Octubre</option>
+                                                  <option value="11" >Noviembre</option>
+                                                  <option value="12">>Diciembre</option>
+                                              
+                                            </select>
+                                    
+                                    <hr>
+                                    <!--<button class="btn btn-secondary" id="exportar" style="">Exportar a Excel</button> -->  
+                                   
+                                    <div id="table-metas">
+                                    <table class="dataTablesAjax table table-hover"  style="font-size:12px;" >
+                                          <thead class="table-dark">
+                                            <tr>
+                                              <th scope="col">A&ntilde;o Mes</th>
+                                              <th scope="col">GProducto</th>
+                                              <th scope="col">CCosto</th>
+                                              <th scope="col">VAnterior</th>
+                                              <th scope="col">%+</th>
+                                              <th scope="col">Meta</th>
+                                              <th>Venta</th>
+                                              <th>%Cump</th>
+                                              <th>FAnterior</th>
+                                              <!--<th></th>-->
+                                              
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+
+                                          
+                                           
+                                                <tr>
+                                                   <td>  <?php echo $anio." - ".$mes; ?> </td>
+                                                   <td>  <?php echo $nomGProducto;?></td>
+                                                   
+                                                   <td>   </td>
+                                                 
+                                                   <td></td>
+                                                   <td> </td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td style="color:<?php echo $color;?>; font-weight: bold;"> %</td>
+                                                   <!--<td> <a href="#" title="Ver Detalle"><i class="mdi mdi-eye"></i></a></td>-->
+                                               
+                                                </tr>
+                                            
+                                            
+                                            
+                                          </tbody>
+                                    </table>
+                                 </div>       
+                            </div>
+                        </div>
+                        
+                    </div>

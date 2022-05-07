@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-lg-5" style="">
+                        
+        <div class="card" onclick="bloquearPantalla();window.location='<?php echo $urlGraficaGauge;?>';" style="cursor:pointer;">
+            <div class="card-body">
+                <h4 class="card-title" style="text-align:center">
+                
+                    Meta - Venta dia  <span style="color:green;"></span>   
+                    <span class="hora" style="text-align: center;"></span>
+                </h4>
+            <!-- <span id="hora" style="text-align: center;"><center><?php echo $hora;?></center></span>-->
+            <div id="cargarScriptGraficaAJAX"></div>
+            <canvas id="grafica-gauge" style="width:450px;text-align: center;"></canvas>
+            <div style="text-align:center;font-weight: bold;"> <span id="preview-textfield" > </span>
+            <div id="datosGrafica"></div>
+            </div>
+            </div>
+            
+            <!--<img src="<?php echo URL_SITE_IMG?>45.gif" style="z-index: 10000;position: absolute;"/>-->
+        </div>
+    
+    </div>
+
+    <!--<button id="boton">cargar</button>
+    <div id="a">
+
+    </div>-->
+
+    <div class="col-lg-7" >
+        <div class="card">
+            <div class="card-body">
+                <!--<h4 class="card-title">Meta General del dia 24-01-2019 <span style="color:green;">$50.000.000</span>   </h4>
+    -->                            <h4 class="card-title" style="text-align:center">
+                
+                    Meta Productos - Venta dia <span style="color:green;"></span>   
+                    <span class="hora" style="text-align: center;"></span>
+                </h4>
+            <div id="myChart" style=" width:100%;min-height:350px;"></div>
+            
+            <table class="table table-bordered " style="font-size:11px;">
+                
+                <thead >
+                    <tr>
+                    
+                    </tr>
+                </thead>
+                <tr style="">
+                
+                </tr>
+                <tr >
+                    <th colspan="6" class="table-dark" style="text-align:center;">META </th>
+                </tr>   
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--<button id="boton">cargar</button>-->
+    
+    
+    </div>
+
+
+  <div class="card" >
+        <div class="card-body" id="listTopVendedor">
+         <!--<center><?php //echo $tablesTop;?></center>-->
+        </div>
+  </div>
