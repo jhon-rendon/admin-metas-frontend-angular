@@ -1,1 +1,140 @@
-<p>vendedor works!</p>
+
+                       
+    <div class="card">
+        <div class="card-body">
+           
+            <!--<h4 class="card-title" style="text-align:center"> Meta Vendedor por producto del A&ntilde;o actual <b>2019</b> Mes de <b>Enero</b> del centro de costo Norte Fijo1</h4>-->
+            
+         
+              
+           
+                                          
+            <h4 class="card-title" style="text-align:center" > Metas <b><?php echo @$_SESSION["ccostoNombreLogin"];?></b>
+                 
+                 <form method="post">
+                     
+                       <select class="selectpicker" id="filtroAnio" name="anio" style="width: 300px;" data-style="btn-success" data-live-search="true">
+                                  <option value="0">Seleccione el A&ntilde;o</option>               
+                               
+                                  
+                        </select>
+                        
+                     <select class="selectpicker" id="filtroMes" name="mes" style="width: 300px;" data-style="btn-success" data-live-search="true">
+                                  <option value="0">Seleccione el mes</option>               
+                                  <option value="1" >Enero</option>
+                                  <option value="2" >Febrero</option>
+                                  <option value="3" >Marzo</option>
+                                  <option value="4">Abril</option>
+                                  <option value="5" >Mayo</option>
+                                  <option value="6" >Junio</option>
+                                  <option value="7" >Julio</option>
+                                  <option value="8" >Agosto</option>
+                                  <option value="9" >Septiembre</option>
+                                  <option value="10" >Octubre</option>
+                                  <option value="11" >Noviembre</option>
+                                  <option value="12">Diciembre</option>
+                              
+                        </select>
+               
+            
+               <select class="selectpicker" id="ccosto" name="ccosto" data-live-search="true" data-style="btn-success">
+                    <option value="0">Seleccione el Centro de Costo</option>
+                   
+                    <option value=""><?php echo selected($listCosto["id_cchomologacion"],$ccosto);?>><?php echo $listCosto["nombre"]?></option>
+                   
+                              
+               </select>
+              
+               </form>
+            <!-- Para el  A&ntilde;o actual <b>2019</b> Mes de <b>Febrero</b>-->
+            </h4>
+           
+          
+            
+            
+           <div id="contenidoAjax">
+         
+        
+            <table class="table table-bordered" style="font-size:12px;">
+              <thead class="table-dark">
+              
+                <tr>
+                    <?php echo $filasHead; ?>
+                </tr>
+              </thead>
+              <tbody>
+              
+                <tr style="">
+                    <?php echo $filasBody;?>
+                </tr>
+             
+              </tbody>
+              
+              </table>
+             
+           <br /><br />
+           <h4 class="card-title" style="text-align:center"> Listado de Vendedores del centro de costo <b><!--Norte Fijo1--></b> <!--(Asignar Metas  Mes de <b>Febrero</b>)--></h4>
+       
+           <form style="text-align:center" id="form-cargar-metas"  method="post" enctype="multipart/form-data">  
+              <label class="file-upload" style="cursor:pointer;">
+                 <img class="cargar-metas" src="<?php echo URL_SITE_IMG?>icono-excel2.png" width="115px" style="text-align:center;cursor:pointer;"  title="Cargar Metas"/> 
+                 <input type="file" id="cargar-metas" title="Cargar Metas" class="cargar-metas" name="archivo"/>
+            </label>
+            
+             
+              &nbsp;&nbsp;
+            
+               <img src="<?php echo URL_SITE_IMG;?>eliminar-meta.png" width="90px" style="text-align:center;cursor:pointer;margin-top:-85px;" title="Bajar Metas" id="bajarMetas"/>
+            
+              &nbsp;&nbsp;
+              <a href="<?php echo URL_SITE?>plantilla-metas.xlsx" target="_blank"><img src="<?php echo URL_SITE_IMG;?>icono-excel-plantilla.png" width="90px" style="text-align:center;cursor:pointer;margin-top:-60px;"/></a>
+            
+              <input type="hidden" name="cargar-metas" value="1"/>
+          </form>
+          
+         
+            <table class="table dataTablesAjax" id="listado">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Identificaci&oacute;n</th>
+                  <th scope="col">Nombre Completo</th>
+                  <th>Estado</th>
+                  <th></th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+             
+                    <tr>
+                        <td ><?php echo $contadorListado;?></td>
+                        <td><?php echo $documento;?></td>
+                        <td><?php echo $nombre;?></td>
+                        <td style="color:<?php echo $colorTexto;?> font-weight: bold;"><?php echo $estado; ?></td>
+                        <td>
+                         <a href="javascript:void(0)" 
+                           class="asingar-meta" onclick="bloquearPantalla();$(this).next().submit();"><?php echo $texto;?></a>
+                         <form method="post" action="meta-vendedor.php">
+                            <input type="hidden" name="documento" value="<?php echo $documento;?>"/>
+                            <input type="hidden" name="nombre" value="<?php echo $nombre;?>" />
+                            <input type="hidden" name="mes" value="<?php echo $mes;?>" />
+                            <input type="hidden" name="ccosto" value="<?php echo $ccosto;?>" />
+                             <input type="hidden" name="anio" value="<?php echo $anio;?>" />
+                           
+                            
+                            
+                         </form>
+                        </td>
+                    </tr>  
+            
+
+              </tbody>
+              </table>   
+              
+           
+             </div>
+         
+        </div>
+    </div>
+    
+

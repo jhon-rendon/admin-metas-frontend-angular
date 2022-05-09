@@ -31,9 +31,26 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/bootstrap.min.css"
+              "src/bootstrap.min.css",
+              "src/assets/plugins/bootstrap/css/bootstrap.min.css",
+              "src/assets/plugins/chartist-js/dist/chartist.min.css",
+              "src/assets/plugins/chartist-js/dist/chartist-init.css",
+              "src/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css",
+              "src/assets/plugins/css-chart/css-chart.css",
+              "src/assets/plugins/metismenu/metisMenu.min.css",
+              "src/assets/css/style.css",
+              "src/assets/css/colors/default-dark.css",
+              "src/assets/css/bootstrap-select.min.css",
+              "src/assets/plugins/jquery-asColorPicker-master/dist/css/asColorPicker.css",
+              "src/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css",
+              "src/assets/plugins/timepicker/bootstrap-timepicker.min.css",
+              "src/assets/plugins/daterangepicker/daterangepicker.css",
+              "src/assets/css/file-upload.css"
+              
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           },
           "configurations": {
             "production": {
@@ -99,7 +116,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/bootstrap.min.css"
+              "src/bootstrap.min.css",
+              "./node_modules/metismenujs/dist/metismenujs.css"
             ],
             "scripts": []
           }

@@ -7,17 +7,19 @@
         <!-- Sidebar navigation-->
        
         <nav class="sidebar-nav">
-            <ul id="metismenu" >
+            <ul class="metismenu" id="sidebarnav" metis-menu >
+          
             <li>
-                    <a class="" routerLink="/" aria-expanded="false" ><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a>
+                    <a class="" routerLink="/" aria-expanded="false"  ><i class="mdi mdi-home"></i><span class="hide-menu">Inicio</span></a>
             </li>
            
-            <li class="mm-active">
-                    <a class="has-arrow" href="#" aria-expanded="true"><i class="mdi mdi-gauge"></i><span class="hide-menu">Metas </span></a>
-                    <ul>
-                          <li><a routerLink="/metas/general" >General</a></li>
-                          <li><a href="<?php echo URL_SITE?>meta-centro-costo.php" onclick="bloquearPantalla();">Centro de Costo</a></li>
-                        <li><a href="<?php echo URL_SITE?>listado-vendedor-ccosto-excel.php" onclick="bloquearPantalla();">Vendedor</a></li>
+            <li>
+              
+                    <a class="has-arrow" href="#" aria-expanded="false" ><i class="mdi mdi-gauge"></i><span class="">Metas </span></a>
+                    <ul aria-expanded="false">
+                          <li><a routerLink="/metas/general" routerLinkActive="active" >General</a></li>
+                          <li><a routerLink="/metas/centro-costo" routerLinkActive="active">Centro de Costo</a></li>
+                        <li><a routerLink="/metas/vendedor" routerLinkActive="active" >Vendedor</a></li>
                         <!--<li><a href="<?php echo URL_SITE?>listado-metas-vendedor.php" onclick="bloquearPantalla();">ListarMetasVendedor</a></li>-->
                         
                       
@@ -25,7 +27,7 @@
             </li>
               <li>
                     <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Reportes   </span></a>
-                    <ul aria-expanded="false" class="collapse">
+                    <ul>
                          <li><a href="<?php echo URL_SITE?>reporte-general.php" onclick="bloquearPantalla();">General</a></li>
                         <li><a href="<?php echo URL_SITE?>reporte-zonas.php" onclick="bloquearPantalla();">Zonas</a></li>
                         <li><a href="<?php echo URL_SITE?>reporte-centro-costo.php" onclick="bloquearPantalla();">Centro de Costo</a></li>
@@ -40,7 +42,7 @@
                        
                   
                          <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account "></i><span class="hide-menu">Visitas </span></a>
-                         <ul aria-expanded="false" class="collapse">
+                         <ul>
                          <li><a href="<?php echo URL_SITE?>visitas-supervisores.php" onclick="bloquearPantalla();">Supervisores</a></li>
                     
                         <li><a href="<?php echo URL_SITE?>listar-visitas.php" onclick="bloquearPantalla();">Listar </a></li>
@@ -51,7 +53,7 @@
              
             <li>
                     <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Centros de Costo </span></a>
-                   <ul aria-expanded="false" class="collapse">
+                   <ul >
                         <!--<li><a href="#">Registrar </a></li>-->
                         <!--<li><a href="#">Listar </a></li>-->
                         <li><a href="<?php echo URL_SITE?>asignar-pdv.php" onclick="bloquearPantalla();">Asignar PDV </a></li>
@@ -70,7 +72,7 @@
             
             <li>
                     <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-flask"></i><span class="hide-menu">Productos </span></a>
-                   <ul aria-expanded="false" class="collapse">
+                   <ul >
                        <!--<li><a href="<?php echo URL_SITE?>registrar-producto.php" onclick="bloquearPantalla();">Registrar </a></li>-->
                        <li><a href="<?php echo URL_SITE?>listar-productos.php" onclick="bloquearPantalla();">Listar </a></li>
                     </ul>

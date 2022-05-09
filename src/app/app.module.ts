@@ -11,6 +11,8 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { HomeComponent } from './shared/home/home.component';
 import { IndexComponent } from './shared/index/index.component';
 
+import { MetismenuAngularModule } from '@metismenu/angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { IndexComponent } from './shared/index/index.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    MetismenuAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]
