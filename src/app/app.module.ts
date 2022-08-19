@@ -12,6 +12,7 @@ import { HomeComponent } from './shared/home/home.component';
 import { IndexComponent } from './shared/index/index.component';
 
 import { MetismenuAngularModule } from '@metismenu/angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MetismenuAngularModule } from '@metismenu/angular';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    MetismenuAngularModule
+    MetismenuAngularModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

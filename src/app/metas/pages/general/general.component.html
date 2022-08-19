@@ -3,47 +3,50 @@
                        
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title" style="text-align:center;">Registro del Incremento de porcentaje de Meta General del A&ntilde;o  <b></b> Mes de <b></b></h4>
+            <h4 class="card-title" style="text-align:center;">Registro del Incremento de porcentaje de Meta General del A&ntilde;o  <b> {{ultimoAnioMeta}}</b> Mes de <b>{{ultimoMesMeta | numeroMes}}</b></h4>
             
             <!--<button id="cargarData" type="button" class="btn btn-info">Cargar Data</button>
             <div id="infoAjax">
             
             </div>-->
            
-            <form method="post" enctype="multipart/form-data" action="" id="formMetaGeneral">
+            <form #miFormulario="ngForm"
+                  autocomplete="off"
+                  (ngSubmit)="guardarMetaGeneral(miFormulario)">
                 
-                
-                <input type="hidden" name="formRegistroMetaGeneralMes" value="1"/>
-                <input type="hidden" name="anio" value=""/>
-                <input type="hidden" name="mes" value=""/>
-                             
-               
-               <table class="table table-bordered table-hover">
+               <table class="table table-bordered table-hover" style="width: 100%;">
                       
                       
-                      
-                      
-                           <tr>
-                              <div class="form-group">
-                                <td><label for="mes">Producto#</label></td>
+                        <tr *ngFor="let productos of listadoProductos.productos;let i = index">
+                                <td><label for="mes">Producto#{{(i+1)}}</label></td>
                                 <td>
-                                    <select class="form-control selectpicker agrupacion"  style="width:auto;" name="producto[]" >
-                                        <option value=""></option>
-                                     </select>
+                                    <!--<select class="form-control selectpicker agrupacion"  style="width:auto;" name="producto[]" >
+                                        <option value="{{productos.descripcion}}">{{productos.descripcion}}</option>
+                                     </select>-->
+                                     {{productos.descripcion}}
                                 </td>
-                                <td>
-                                    <input type="text" onkeyup="ValidNumberInput(this);" onchange="ValidNumberInput(this);" name="porcentaje[]" class="form-control" style="width:200px;" placeholder="valor % Incremento" required=""/>
+                                <td >
+                                    <!--<input type="text" onkeyup="ValidNumberInput(this);" onchange="ValidNumberInput(this);" name="porcentaje[]" class="form-control" style="width:200px;" placeholder="valor % Incremento" required=""/>-->
+                                    <input type="text" 
+                                           ngModel
+                                           name="{{productos.codigo}}"
+                                           class="form-control {{classValid}}" 
+                                           style="width:200px;" 
+                                           placeholder="valor % Incremento" 
+                                           required/>
                                 </td>
-                               </div>
+                              
                        
                            </tr>
+
+                           
                            
                    
               </table>
                    <!--<center><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" type="submit">Registrar</button></center>-->
-                  
+                   <button class="btn btn-primary" type="submit" >Registrar</button>     
             </form>
-             <button class="btn btn-primary"  type="submit" id="btnEnviarForm">Registrar</button>
+             
              <!--<center><button class="btn btn-primary"  type="button" id="btnEnviarForm">Registrar</button></center>-->
              
               
@@ -54,8 +57,29 @@
                 </select>
                 
             <br />
+            <button (click) ="exportToExcel()">excel</button>
+            <br>
+            <br>
+           <!--- <button class="btn btn-primary" (click) ="listarData()">Listar</button>-->
+
+
+           <select  
+                   class="form-control" 
+                  (change)="filtroAnio($event)"
+                  [disabled]="load">
+             
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+               
+          </select>
+          <br>
+
+            <div class="spinner" *ngIf="load" style="position:absolute; "> <img src="../assets/images/load.gif" width="70px"> </div>
             
-            <table class="table table-bordered table-hover DataTableListado">
+            <div *ngIf="listadoMetasGeneral">
+            <table class="table table-bordered table-hover DataTableListado" id="listado">
               <thead class="table-dark">
                 <tr>
                   <th scope="col">A&ntilde;o</th>
@@ -63,23 +87,27 @@
                   <th scope="col">Producto</th>
                   <th scope="col">% Incremento</th>
                   
+                  
                 </tr>
               </thead>
               <tbody>
                 
-                <tr>
+                <tr *ngFor="let listado of listadoMetasGeneral.meta_general">
                  
-                  <td></td>
-                  <td> </td>
-                  <td> </td>
-                  <td> %</td>
-               
+                  <td>{{ listado.anio }}</td>
+                  <td>{{ listado.mes | numeroMes }}</td>
+                  <td>{{ listado.producto }}</td>
+                  <td>{{ listado.porcentaje | number }} % </td>
+                 
+                 
                 </tr>
+
+               
                 
                    
               </tbody>
             </table>
-         
+          </div>
         </div>
     </div>
     
