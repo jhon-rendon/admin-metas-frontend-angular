@@ -139,17 +139,19 @@ export class GeneralComponent {
       //console.log(`${key}: ${value}`);
       if( value === ''){
         //camposVacios = true;
-        Swal.fire({
+        /*Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Todos los campos son obligatorios',
           //footer: '<a href="">Why do I have this issue?</a>'
         });
-        return;
+        return;*/
       }
       dataPorcentajes.push({
         codigo_producto: key,
-        porcentaje     : value
+        porcentaje     : value,
+        anio: 2022
+        
       });
     }
 
@@ -168,8 +170,8 @@ export class GeneralComponent {
     }*/
 
     json = {
-      anio : this.ultimoAnioMeta,
-      mes  : this.ultimoMesMeta,
+      //anio : 'sdsfd',
+      //mes  : this.ultimoMesMeta,
       dataPorcentajes
     }
     let respuesta:any;

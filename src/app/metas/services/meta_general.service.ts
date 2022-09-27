@@ -38,10 +38,10 @@ export class MetaGeneralService {
   
   getlistadoMetaGeneralByAnio( anio: number ){
 
-    return this.http.post('http://localhost:8080/meta-general',{
+    return this.http.post('http://localhost:8080/meta-general/listar',{
       //tipoPeticion:['listadoProductos','metasGeneralActual']
-      tipoPeticion:'listadoMetasGeneral',
-      anio
+      //tipoPeticion:'listadoMetasGeneral',
+      //anio
     });
 
   }
@@ -55,15 +55,21 @@ export class MetaGeneralService {
   
   }
 
-  insertMetaGeneral( dataJson:any ){
+  /*insertMetaGeneral( dataJson:any ){
     console.log('Metodo insert');
     return this.http.post('http://localhost:8080/meta-general',{
       //tipoPeticion:['listadoProductos','metasGeneralActual']
       tipoPeticion:'insert',
       data:dataJson
     });
-  }
+  }*/
 
+  insertMetaGeneral( dataJson:any ){
+    console.log('Metodo insert');
+    return this.http.post('http://localhost:8080/meta-general/guardar',{
+      data:dataJson
+    });
+  }
   
 }
 

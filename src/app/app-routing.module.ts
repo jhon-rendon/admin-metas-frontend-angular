@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { HomeComponent } from './shared/home/home.component';
+import { LoginGuard } from './auth/services/guards/login.guard';
 
 const routes: Routes = [
   {
@@ -18,7 +19,9 @@ const routes: Routes = [
   }*/
   {
     path:'',
-    component:HomeComponent
+    canActivate: [ LoginGuard ],
+    component:HomeComponent,
+    
   },
   /*{
     path:'metas',
@@ -26,8 +29,14 @@ const routes: Routes = [
   }*/
   {
     path:'metas',
+    canActivate: [ LoginGuard ],
     loadChildren:() => import('./metas/metas.module').then( m => m.MetasModule )
   },
+  {
+    path: '**',
+    redirectTo: '404'
+  }
+  
 
 ];
 
