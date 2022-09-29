@@ -20,6 +20,7 @@
     "@angular/router": "~12.1.0",
     "@metismenu/angular": "0.0.2",
     "@types/jquery": "^3.5.14",
+    "angular-datatables": "^14.0.0",
     "angular-sidebar-menu": "^1.5.0",
     "jquery": "^3.6.0",
     "metismenu": "^3.0.7",

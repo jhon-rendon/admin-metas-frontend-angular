@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { environment } from '../../../environments/environment';
+
+const URL = environment.URL;
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +19,7 @@ export class AuthService {
 
     //console.log(usuario);
     //console.log(password);
-    return this.http.post('http://localhost:8080/auth/login', { usuario,password})
+    return this.http.post(`${ URL }/auth/login`, { usuario,password})
           .pipe(
             map( (resp:any) => {
               localStorage.setItem('documento',resp.documento);
@@ -29,7 +33,7 @@ export class AuthService {
   }
 
 
-  estaLogueado( ){
+  /*estaLogueado( ){
     console.log(localStorage.getItem('token'));
     if( localStorage.getItem('token') ){
       return localStorage.getItem('token')!.length > 5 ? true: false;
@@ -38,7 +42,7 @@ export class AuthService {
       return false;
     }
    // return ( localStorage.getItem('token')!.length > 5 ? true: false);
-  }
+  }*/
 
   logouth(){
 
@@ -47,5 +51,21 @@ export class AuthService {
 
     this.router.navigate(['auth//login']);
 
+  }
+
+
+  validarToken():Observable<boolean>{
+
+    const headers = new HttpHeaders()
+    .set('x-token',localStorage.getItem('token') || '');
+
+    return this.http.get(`${ URL }/auth/validartoken`,{ headers } )
+      .pipe(
+        map( (resp:any) => {
+
+          return resp.success;
+        }),
+        catchError( err => of( false ))
+      );
   }
 }

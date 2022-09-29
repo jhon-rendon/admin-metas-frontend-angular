@@ -12,20 +12,24 @@ const routes: Routes = [
     path:'',
     component:HomeComponent,
     canActivate: [ LoginGuard ],
+    canLoad:[ LoginGuard ],
     children:[
       {
         path:'general',
         canActivate: [ LoginGuard ],
+        canLoad:[ LoginGuard ],
         component:GeneralComponent
       },
       {
         path:'centro-costo',
         canActivate: [ LoginGuard ],
+        canLoad:[ LoginGuard ],
         component:CentrocostoComponent
       },
       {
         path:'vendedor',
         canActivate: [ LoginGuard ],
+        canLoad:[ LoginGuard ],
         component:VendedorComponent
       }
     ]

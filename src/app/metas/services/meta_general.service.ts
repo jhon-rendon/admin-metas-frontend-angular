@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+
+const URL = environment.URL;
 
 @Injectable({
   providedIn: 'root'
@@ -28,27 +31,34 @@ export class MetaGeneralService {
 
   getlistadoMetaGeneral(){
 
-    return this.http.post('http://localhost:8080/meta-general',{
-      //tipoPeticion:['listadoProductos','metasGeneralActual']
-      tipoPeticion:'listadoMetasGeneral'
-    });
+    //console.log(localStorage.getItem('token'));
+    const headers = new HttpHeaders()
+    .set('x-token',localStorage.getItem('token') || '');
+
+    return this.http.post(`${ URL }/meta-general/listar`,
+      {},
+      { headers }
+    );
 
   }
 
   
   getlistadoMetaGeneralByAnio( anio: number ){
 
-    return this.http.post('http://localhost:8080/meta-general/listar',{
-      //tipoPeticion:['listadoProductos','metasGeneralActual']
-      //tipoPeticion:'listadoMetasGeneral',
-      //anio
-    });
+    console.log('Listar Metas Por año');
+    const headers = new HttpHeaders()
+    .set('x-token',localStorage.getItem('token') || '');
+     
+    return this.http.post(`${ URL }/meta-general/listar`,
+      {anio},
+      { headers}
+    );
 
   }
 
   getlistadoProductos(){
 
-      return this.http.post('http://localhost:8080/meta-general',{
+      return this.http.post(`${ URL }/meta-general`,{
         //tipoPeticion:['listadoProductos','metasGeneralActual']
         tipoPeticion:'listadoProductos'
       });
@@ -66,7 +76,7 @@ export class MetaGeneralService {
 
   insertMetaGeneral( dataJson:any ){
     console.log('Metodo insert');
-    return this.http.post('http://localhost:8080/meta-general/guardar',{
+    return this.http.post(`${ URL }http://localhost:8080/meta-general/guardar`,{
       data:dataJson
     });
   }
