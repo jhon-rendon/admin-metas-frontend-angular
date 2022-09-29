@@ -14,6 +14,7 @@ import { IndexComponent } from './shared/index/index.component';
 import { MetismenuAngularModule } from '@metismenu/angular';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     MetismenuAngularModule,
     HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

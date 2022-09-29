@@ -45,11 +45,12 @@
               "src/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css",
               "src/assets/plugins/timepicker/bootstrap-timepicker.min.css",
               "src/assets/plugins/daterangepicker/daterangepicker.css",
-              "src/assets/css/file-upload.css"
-              
+              "src/assets/css/file-upload.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.min.css"
             ],
             "scripts": [
-              
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.min.js"
             ]
           },
           "configurations": {

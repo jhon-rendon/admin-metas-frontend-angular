@@ -7,6 +7,9 @@ import { CentrocostoComponent } from './pages/centrocosto/centrocosto.component'
 import { VendedorComponent } from './pages/vendedor/vendedor.component';
 import { MetasRoutingModule } from './metas-routing.module';
 import { NumeroMesPipe } from './pipes/numero-mes.pipe';
+import { DataTablesModule } from 'angular-datatables';
+
+
 
 
 
@@ -24,8 +27,8 @@ import { NumeroMesPipe } from './pipes/numero-mes.pipe';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MetasRoutingModule
-    
+    MetasRoutingModule,
+    DataTablesModule
   ]
 })
 export class MetasModule { }

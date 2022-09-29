@@ -1,13 +1,16 @@
-import {  Component } from '@angular/core';
+import { Component, OnInit,OnDestroy,ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import Swal from'sweetalert2';
 import { MetaGeneralService } from '../../services/meta_general.service';
 import { ProductosService } from '../../services/productos.service';
 
+import { DataTableDirective } from 'angular-datatables';
+
 
 
 import * as XLSX from 'xlsx';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -15,7 +18,7 @@ import * as XLSX from 'xlsx';
   templateUrl: './general.component.html',
   styleUrls: ['./general.component.css']
 })
-export class GeneralComponent {
+export class GeneralComponent implements OnInit, OnDestroy {
   
   
   public listadoMetasGeneral :any = [];
@@ -25,6 +28,29 @@ export class GeneralComponent {
   public ultimoMesMeta:Number     = new Date().getMonth()+1;
   public ultimoAnioMeta           = new Date().getFullYear();
 
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
+  @ViewChild(DataTableDirective, {static: false})
+  dtElement!: DataTableDirective;
+  
+  ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+    }
+      //pageLength: 
+    };
+
+    this.listarMetasGeneral();
+  
+  }
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }
   
   /*miFormulario:FormGroup = new FormGroup({
     'porcentaje': new FormControl('valor')
@@ -42,7 +68,7 @@ export class GeneralComponent {
               ){
      //this.listarData();
     this.listarProductos(); 
-    this.listarMetasGeneral();
+
     /*this.listadoProductos["productos"] =[
       {  descripcion:'ASTRO', codigo : 1},
       {
@@ -105,6 +131,9 @@ export class GeneralComponent {
          this.ultimoMesMeta = Math.max(...meses )+1;
     
           console.log( this.ultimoAnioMeta, this.ultimoMesMeta);
+
+           // Calling the DT trigger to manually render the table
+         this.dtTrigger.next();
         });
   }
 
@@ -116,6 +145,7 @@ export class GeneralComponent {
     this.serviceMetas.getlistadoMetaGeneralByAnio( anio )
         .subscribe( resp => {
             this.listadoMetasGeneral = resp;
+            this.rerender();
         },
         (error) => {
             console.log(error);
@@ -290,6 +320,16 @@ export class GeneralComponent {
     XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
 
     XLSX.writeFile(book, this.name);
+  }
+
+
+  rerender(): void {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      // Destroy the table first
+      dtInstance.destroy();
+      // Call the dtTrigger to rerender again
+      this.dtTrigger.next();
+    });
   }
 
 }
