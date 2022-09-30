@@ -20,6 +20,7 @@ const routes: Routes = [
   {
     path:'',
     canActivate: [ LoginGuard ],
+    canLoad: [ LoginGuard ],
     component:HomeComponent,
     
   },
@@ -30,6 +31,7 @@ const routes: Routes = [
   {
     path:'metas',
     canActivate: [ LoginGuard ],
+    canLoad: [ LoginGuard ],
     loadChildren:() => import('./metas/metas.module').then( m => m.MetasModule )
   },
   {

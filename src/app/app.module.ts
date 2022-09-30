@@ -13,6 +13,10 @@ import { IndexComponent } from './shared/index/index.component';
 
 import { MetismenuAngularModule } from '@metismenu/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
+import { ZingchartAngularModule } from 'zingchart-angular';
+
+
 
 
 @NgModule({
@@ -31,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     MetismenuAngularModule,
     HttpClientModule,
-
+    ChartsModule,
+    ZingchartAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,10 +16,11 @@ export class AuthService {
                private router:Router) { }
 
   login( usuario:string, password: string ){
-
+    
+    password = btoa( password );
     //console.log(usuario);
-    //console.log(password);
-    return this.http.post(`${ URL }/auth/login`, { usuario,password})
+    console.log( password );
+    return this.http.post(`${ URL }/auth/login`, { usuario, password})
           .pipe(
             map( (resp:any) => {
               localStorage.setItem('documento',resp.documento);
@@ -63,7 +64,7 @@ export class AuthService {
       .pipe(
         map( (resp:any) => {
 
-          return resp.success;
+          return resp.status;
         }),
         catchError( err => of( false ))
       );

@@ -1,13 +1,42 @@
 <div class="row">
-    <div class="col-lg-5" style="">
+    <div class="col-lg-6" style="">
                         
         <div class="card" onclick="bloquearPantalla();window.location='<?php echo $urlGraficaGauge;?>';" style="cursor:pointer;">
             <div class="card-body">
                 <h4 class="card-title" style="text-align:center">
                 
-                    Meta - Venta dia  <span style="color:green;"></span>   
+                   Ventas vs Metas del 1 hasta el 29 de Septiembre 2022 21:57:23 PM <span style="color:green;"></span>   
                     <span class="hora" style="text-align: center;"></span>
                 </h4>
+
+                <div>
+                    <div style="display: block">
+                      <canvas baseChart
+                              [datasets]="barChartData"
+                              [labels]="barChartLabels"
+                              [options]="barChartOptions"
+                              [legend]="barChartLegend"
+                              [chartType]="barChartType">
+                      </canvas>
+                    </div>
+                  </div>
+
+                  <zingchart-angular [config]="config" [height]="500"></zingchart-angular>
+
+                <!--<div>
+                    <div>
+                      <div style="display: block">
+                        <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                        [colors]="barChartColors"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType">
+                        </canvas>
+                      </div>
+                    </div>
+                  </div>-->
             <!-- <span id="hora" style="text-align: center;"><center><?php echo $hora;?></center></span>-->
             <div id="cargarScriptGraficaAJAX"></div>
             <canvas id="grafica-gauge" style="width:450px;text-align: center;"></canvas>
@@ -26,15 +55,42 @@
 
     </div>-->
 
-    <div class="col-lg-7" >
+    <div class="col-lg-6" >
         <div class="card">
             <div class="card-body">
                 <!--<h4 class="card-title">Meta General del dia 24-01-2019 <span style="color:green;">$50.000.000</span>   </h4>
     -->                            <h4 class="card-title" style="text-align:center">
                 
-                    Meta Productos - Venta dia <span style="color:green;"></span>   
+                    Ventas vs Metas 29 de Septiembre 2022 21:57:23 PM <span style="color:green;"></span>   
                     <span class="hora" style="text-align: center;"></span>
                 </h4>
+
+                <div>
+                    <div style="display: block">
+                      <canvas baseChart
+                              [datasets]="barChartData"
+                              [labels]="barChartLabels"
+                              [options]="barChartOptions"
+                              [legend]="barChartLegend"
+                              [chartType]="barChartType">
+                      </canvas>
+                    </div>
+                  </div>
+
+                <!--<div>
+                    <div>
+                      <div style="display: block">
+                        <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [colors]="barChartColors"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType">
+                        </canvas>
+                      </div>
+                    </div>
+                  </div>-->
             <div id="myChart" style=" width:100%;min-height:350px;"></div>
             
             <table class="table table-bordered " style="font-size:11px;">
@@ -51,6 +107,8 @@
                     <th colspan="6" class="table-dark" style="text-align:center;">META </th>
                 </tr>   
                 </table>
+
+              
             </div>
         </div>
     </div>
